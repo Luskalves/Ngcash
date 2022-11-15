@@ -6,7 +6,8 @@ module.exports = {
     await queryInterface.createTable('Accounts', {
       id: {
         primaryKey: true,
-        type: Sequelize.INTEGER
+        autoIncrement: true,
+        type: Sequelize.INTEGER,
       },
       
       balance: {
