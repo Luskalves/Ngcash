@@ -28,6 +28,7 @@ services:
     ports:
       - 5432:5432
     environment:
+      - POSTGRES_USER=ngcash
       - POSTGRES_PASSWORD=ngcash123
     healthcheck:
       test: ["CMD-SHELL", "pg_isready"]
