@@ -10,12 +10,12 @@ const {
 } = process.env;
 
 const config: Options = {
-  host: DB_HOST,
+  host: DB_HOST,    
   username: DB_USER,
   password: DB_PASS,
   database: DB_NAME,
   port: Number(DB_PORT),
-  dialect: 'postgres',
+  dialect: 'postgres'
 }
 
 module.exports = config;
