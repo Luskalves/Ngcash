@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node ./build/index.js",
+    "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node ./src/index.ts"
+    "dev": "ts-node ./src/index.ts",
+    "compose-up": "docker-compose up --build -d",
+    "compose-down": "docker-compose down",
+    "compose-restart": "docker-compose down && docker-compose up --build -d"
   },
   "keywords": [],
   "author": "Lucas",
