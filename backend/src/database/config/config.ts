@@ -17,3 +17,5 @@ const config: Options = {
   port: Number(DB_PORT),
   dialect: 'postgres',
 }
+
+module.exports = config;
