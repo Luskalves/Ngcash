@@ -14,6 +14,14 @@ class TransactionsController {
 
     res.status(200).json(response);
   }
+
+  public async getAll(req: Request, res: Response) {
+    const { token } = req.body;
+
+    const transactions = await this.Service.getTransactions(token)
+    
+    res.status(200).json(transactions);
+  }
 }
 
 export default TransactionsController;
