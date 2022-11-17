@@ -1,8 +1,7 @@
-import { Router } from 'express';
-import { Request, Response } from 'express';
+import { Router, Request, Response } from 'express';
 import RegisterModel from '../models/regirterModel';
-import RegisterService from '../services/RegisterService';
-import RegisterController from '../controllers/RegisterController';
+import RegisterService from '../services/registerService';
+import RegisterController from '../controllers/registerController';
 
 const registerRoute = Router();
 
