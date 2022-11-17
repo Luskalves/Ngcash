@@ -16,7 +16,7 @@ server.use(express.json())
 server.use('/user', userRoute)
 server.use('/login', loginRoute)
 server.use('/register', registerRoute);
-server.use('/transaction', transRoute);
+server.use('/transactions', transRoute);
 
 server.use(errorMiddleware);
 
