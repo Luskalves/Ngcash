@@ -1,23 +1,20 @@
 import { Sequelize } from 'sequelize';
 import Accounts from '../database/models/Accounts';
 import Transactions from '../database/models/Transactions';
+import NotFound from '../errors/NotFound';
 
 class TransactionsModel {
   public async transaction(credtId: number, debtId: number, value: number) {
     await Accounts.update({
       balance: Sequelize.literal(`balance - ${value}`)
     }, {
-      where: {
-        id: credtId,
-      },
+      where: { id: credtId },
     });
     
     await Accounts.update({
       balance: Sequelize.literal(`balance + ${value}`)
     }, {
-      where: {
-        id: debtId,
-      },
+      where: { id: debtId },
     });
 
     const transDate = new Date();
@@ -31,6 +28,22 @@ class TransactionsModel {
 
     return transaction;
   }
+
+  public async getAll(id: number) {
+    const allTransactions = await Transactions.findAll({
+      where: {
+        $or: [
+          { debitedAccountId: id },
+          { creditedAccountId: id }
+        ]
+      },
+    });
+
+    if (!allTransactions) throw new NotFound("Nenhuma transação encontrada.");
+
+    return allTransactions;
+  }
+
 }
 
 export default TransactionsModel;
