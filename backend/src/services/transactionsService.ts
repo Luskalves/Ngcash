@@ -1,6 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import ConflictError from '../errors/ConflictError';
 import IUser from "../interfaces/IUser";
+import IUserInfo from '../interfaces/IUserInfo';
 import TransactionsModel from "../models/transactionsModel";
 import UserModel from '../models/userModel';
 
@@ -13,15 +14,20 @@ class TransactionsService {
     this.Model = model;
     this.SecondaryModel = secondaryModel;
   }
+
+  private async getUser(token: string): Promise<IUserInfo> {
+    const data = jwt.decode(token);
+    const { username } = data as IUser;
+    const user = await this.SecondaryModel.userInfo(username);
+
+    return user;
+  }
   
   public async cashOut(
     token: string,
     value: number,
     userDest: string) {
-    const data = jwt.decode(token);
-    const { username } = data as IUser;
-
-    const user = await this.SecondaryModel.userInfo(username);
+    const user = await this.getUser(token);
     const destUser = await this.SecondaryModel.userInfo(userDest);
 
     if (user.accountId === destUser.accountId) throw new ConflictError(SAME_USER)
@@ -32,6 +38,14 @@ class TransactionsService {
       .transaction(user.accountId, destUser.accountId, value);
   
     return response;
+  }
+
+  public async getTransactions(token: string) {
+    const user = await this.getUser(token);
+
+    const transactions = await this.Model.getAll(user.accountId);
+    
+    return transactions;
   }
 }
 
