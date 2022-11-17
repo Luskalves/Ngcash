@@ -1,4 +1,4 @@
-import INewUser from "../INewUser";
+import INewUser from "../IUser";
 
 export default interface IRegister {
   existUser(username: string): void;
