@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize';
+import { Op, Sequelize } from 'sequelize';
 import Accounts from '../database/models/Accounts';
 import Transactions from '../database/models/Transactions';
 import NotFound from '../errors/NotFound';
@@ -32,18 +32,18 @@ class TransactionsModel {
   public async getAll(id: number) {
     const allTransactions = await Transactions.findAll({
       where: {
-        $or: [
+        [Op.or]: [
           { debitedAccountId: id },
           { creditedAccountId: id }
         ]
       },
+
     });
 
     if (!allTransactions) throw new NotFound("Nenhuma transação encontrada.");
 
     return allTransactions;
   }
-
 }
 
 export default TransactionsModel;
