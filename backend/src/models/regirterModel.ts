@@ -1,6 +1,6 @@
 import Accounts from '../database/models/Accounts';
 import Users from '../database/models/Users';
-import INewUser from '../interfaces/INewUser';
+import IUser from '../interfaces/IUser';
 import IRegister from '../interfaces/models/IRegister';
 
 class RegisterModel implements IRegister {
@@ -15,7 +15,7 @@ class RegisterModel implements IRegister {
     }
   }
 
-  public async register(user: INewUser) {
+  public async register(user: IUser) {
     const { username, password } = user;
 
     const account = await Accounts.create({
