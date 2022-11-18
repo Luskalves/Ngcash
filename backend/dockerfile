@@ -1,8 +1,8 @@
 FROM node:16.14-alpine
 
-WORKDIR /app
+WORKDIR /app-backend
 
-COPY . /app
+COPY . /app-backend
 
 EXPOSE 3001
 

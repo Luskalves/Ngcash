@@ -6,7 +6,9 @@ services:
     build: ./
     ports:
       - 3001:3001
-    working_dir: /app
+    working_dir: /app-backend
+    volumes:
+    - ./:/app-backend
     depends_on:
       - ngcash_db
     environment:
