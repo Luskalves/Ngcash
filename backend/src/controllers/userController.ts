@@ -14,6 +14,16 @@ class UserController {
 
     res.status(200).json(response);
   }
+  
+  public async userDeposit(req: Request, res: Response) {
+    const { token, value } = req.body;
+
+    await this.Service.userDeposit(token, value);
+
+    const message = { message: "Depositado com sucesso."};
+
+    res.status(200).json(message);
+  }
 }
 
 export default UserController;
