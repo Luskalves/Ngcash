@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node ./build/index.js",
+    "start": "node ./build/index.js",
+    "prestart": "npm run build && npm run db:reset",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev ./src/index.ts",

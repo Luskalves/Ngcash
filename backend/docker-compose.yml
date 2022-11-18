@@ -1,18 +1,18 @@
 version: '3.9'
 
 services:
-  backend:
+  ngcash_backend:
     container_name: ngcash_server_backend
     build: ./
     ports:
       - 3001:3001
     working_dir: /app
     depends_on:
-      ngcash_db:
-        condition: service_healthy
+      - ngcash_db
     environment:
       - SERVER_PORT=3001
-      - DB_HOST=localhost
+      - DB_HOST=ngcash_db
+      - DB_NAME=ngcash_db
       - DB_USER=ngcash
       - DB_PASS=ngcash123
       - DB_PORT=5432
@@ -20,20 +20,27 @@ services:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
       retries: 5
+    networks:
+      - database_network
 
   ngcash_db:
     container_name: ngcash_database
     image: 'postgres'
     restart: always
+    user: 'postgres'
+    expose:
+      - 5432
     ports:
       - 5432:5432
     environment:
       - POSTGRES_USER=ngcash
       - POSTGRES_PASSWORD=ngcash123
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready"]
+      test: ["CMD-SHELL", "pg_isready -d ngcash_db -U ngcash"]
       timeout: 10s
       retries: 5
+    networks:
+      - database_network
 
-  
-    
+networks:
+  database_network:
