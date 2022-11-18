@@ -1,0 +1,23 @@
+{
+  "name": "ngcashproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compose:up": "docker-compose up --build -d",
+    "compose:down": "docker-compose down",
+    "compose:restart": "docker-compose down && docker-compose up --build -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luskalves/Ngcash.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luskalves/Ngcash/issues"
+  },
+  "homepage": "https://github.com/Luskalves/Ngcash#readme"
+}
