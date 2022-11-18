@@ -13,5 +13,6 @@ const controller = new TransactionsController(service);
 
 transRoute.get('/', (req: Request, res: Response) => controller.getAll(req, res));
 transRoute.patch('/', (req: Request, res: Response) => controller.cashOut(req, res));
+transRoute.get('/filtered', (req: Request, res: Response) => controller.getFiltered(req, res));
 
 export default transRoute;
