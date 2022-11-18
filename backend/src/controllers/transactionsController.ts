@@ -22,6 +22,16 @@ class TransactionsController {
     
     res.status(200).json(transactions);
   }
+
+  public async getFiltered(req: Request, res: Response) {
+    const { token, date, filterOp } = req.body;
+
+    const newDate = new Date(date);
+
+    const result = await this.Service.getFiltered(token, newDate, filterOp);
+
+    res.status(200).json(result);
+  }
 }
 
 export default TransactionsController;
