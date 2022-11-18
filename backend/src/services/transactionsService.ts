@@ -1,7 +1,9 @@
 import * as jwt from 'jsonwebtoken';
+import BadRequest from '../errors/BadRequest';
 import ConflictError from '../errors/ConflictError';
 import IUser from "../interfaces/IUser";
 import IUserInfo from '../interfaces/IUserInfo';
+import { CashType } from '../interfaces/types/CashType';
 import TransactionsModel from "../models/transactionsModel";
 import UserModel from '../models/userModel';
 
@@ -16,6 +18,8 @@ class TransactionsService {
   }
 
   private async getUser(token: string): Promise<IUserInfo> {
+    if (!token) throw new BadRequest("Token inválido!");
+
     const data = jwt.decode(token);
     const { username } = data as IUser;
     const user = await this.SecondaryModel.userInfo(username);
@@ -41,11 +45,22 @@ class TransactionsService {
   }
 
   public async getTransactions(token: string) {
-    const user = await this.getUser(token);
+    const { accountId } = await this.getUser(token);
 
-    const transactions = await this.Model.getAll(user.accountId);
+    const transactions = await this.Model.getAll(accountId);
     
     return transactions;
+  }
+  
+  public async getFiltered(
+    token: string,
+    date: Date,
+    cashOp: CashType) {
+    const { id } = await this.getUser(token);
+
+    const filteredTransac = await this.Model.getFiltered(id, date, cashOp);
+    
+    return filteredTransac;
   }
 }
 
