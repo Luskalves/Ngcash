@@ -10,6 +10,6 @@ const service = new UserService(model);
 const controller = new UserController(service);
 
 userRoute.get('/', (req: Request, res: Response) => controller.getUserInfo(req, res));
-userRoute.get('/deposit', (req: Request, res: Response) => controller.userDeposit(req, res));
+userRoute.patch('/deposit', (req: Request, res: Response) => controller.userDeposit(req, res));
 
 export default userRoute;
