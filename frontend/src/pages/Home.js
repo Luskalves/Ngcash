@@ -3,9 +3,14 @@ import appContext from '../context/context';
 import React, { useEffect, useContext }  from 'react';
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
+import DoTransaction from '../components/DoTransaction';
 
 function Home() {
-  const { balance, setBalance, setUsername } = useContext(appContext);
+  const {
+    balance,
+    setBalance,
+    setUsername
+  } = useContext(appContext);
 
   const navigate = useNavigate();
 
@@ -24,12 +29,13 @@ function Home() {
 
   useEffect(() => {
     getUserInfo();
-  })
+  }, [])
 
   return (
     <div>
       <Header />
-      <div>Saldo: {balance}</div>
+      <span>Saldo: R${balance}</span>
+      <DoTransaction />
     </div>
   )
 }
