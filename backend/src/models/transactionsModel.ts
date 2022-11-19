@@ -56,7 +56,7 @@ class TransactionsModel {
       const filteredTransac = await Transactions.findAll({
         where: {
           createdAt: date,
-        }
+        },
       });
       return filteredTransac as ITransactions[];
     }
