@@ -11,8 +11,8 @@ const secondModel = new UserModel();
 const service = new TransactionsService(model, secondModel);
 const controller = new TransactionsController(service);
 
-transRoute.get('/', (req: Request, res: Response) => controller.getAll(req, res));
+transRoute.post('/', (req: Request, res: Response) => controller.getAll(req, res));
 transRoute.patch('/', (req: Request, res: Response) => controller.cashOut(req, res));
-transRoute.get('/filtered', (req: Request, res: Response) => controller.getFiltered(req, res));
+transRoute.post('/filtered', (req: Request, res: Response) => controller.getFiltered(req, res));
 
 export default transRoute;
