@@ -5,12 +5,15 @@ function Provider({ children }) {
 
   const [username, setUsername] = useState("");
   const [balance, setBalance] = useState(0);
+  const [deposit, setDeposit] = useState(0);
 
   const values = {
     username,
     setUsername,
     balance,
-    setBalance
+    setBalance,
+    deposit,
+    setDeposit
   };
 
   return (
