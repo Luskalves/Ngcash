@@ -1,3 +1,4 @@
+import cors from 'cors';
 import 'dotenv/config';
 import 'express-async-errors';
 import express from 'express';
@@ -12,6 +13,8 @@ const { SERVER_PORT } = process.env;
 const server = express();
 
 server.use(express.json())
+
+server.use(cors());
 
 server.use('/user', userRoute)
 server.use('/login', loginRoute)
