@@ -9,7 +9,6 @@ const model = new LoginModel();
 const service = new LoginService(model);
 const controller = new LoginController(service);
 
-
 loginRoute.post('/', (req: Request, res: Response) => controller.post(req, res))
 
 export default loginRoute;
