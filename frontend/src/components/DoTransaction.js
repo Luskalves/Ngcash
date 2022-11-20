@@ -16,15 +16,14 @@ function DoTransaction() {
 
   const doTransaction = async () => {
     try {
-      const response = await backendApi.patch('/transactions', {
+      await backendApi.patch('/transactions', {
         token,
         userDest,
         value: deposit,
       });
-      console.log(response);
       navigate(0);
     } catch(err) {
-      setErrMsg("Falha no deposito");
+      setErrMsg("Falha na transferência");
     }
   }
 
@@ -40,28 +39,28 @@ function DoTransaction() {
   }
 
   return (
-    <div>
-      <label> Transferir para:
-        <input
+    <div className="login-input p-2 space-y-4 bg-slate-300 rounded shadow-xl shadow-slate-250 items-center space">
+      <input
+          className="rounded p-1"
           type="submmit"
           name="userDest"
           placeholder="Nome Do Usuário"
           onChange={ (e) => handlerChange(e) }
         />
-      </label>
-      <label> Valor:
-        <input
+      <input
+          className="rounded p-1"
           type="number"
           name="depositValue"
+          min="0"
           placeholder="Valor para transferir"
           onChange={ (e) => handlerChange(e) }
         />
-      </label>
       <button
+        className="rounded p-1 bg-black hover:underline text-white hover:underline hover:bg-white hover:text-black"
         onClick={() => doTransaction()}
       >Transferir</button>
 
-      { errorMsg ?<span>{errorMsg}</span> : "" }
+      { errorMsg ? <span className="text-red-600">{errorMsg}</span> : "" }
     </div>
   );
 }
