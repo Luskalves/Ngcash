@@ -5,6 +5,8 @@ import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 import DoTransaction from '../components/DoTransaction';
 
+let BG_COLOR = "bg-green-700";
+
 function Home() {
   const {
     balance,
@@ -20,6 +22,8 @@ function Home() {
       const { data } = await backendApi.post('/user', {
         token,
       });
+      if (data.balance <= 0) BG_COLOR = "bg-red-600"
+      else BG_COLOR = "bg-green-700";
       setBalance(data.balance);
       setUsername(data.username);
     } catch (err) {
@@ -34,8 +38,12 @@ function Home() {
   return (
     <div>
       <Header />
-      <span>Saldo: R${balance}</span>
-      <DoTransaction />
+      <div className="w-screen h-screen flex flex-col items-center pt-20 space-y-5">
+        <div>
+          <span className={`${BG_COLOR} rounded text-white p-2`}>Seu saldo: R${balance}</span>
+        </div>
+        <DoTransaction />
+      </div>
     </div>
   )
 }
