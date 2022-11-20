@@ -2,10 +2,12 @@ import backendApi from '../api/backendApi';
 import appContext from '../context/context';
 import React, { useContext, useState }  from 'react';
 import { useNavigate } from 'react-router-dom';
+import GenericHeader from '../components/GenericHeader';
 
 function Register() {
   const { username, setUsername } = useContext(appContext);
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,7 +23,8 @@ function Register() {
       
       navigate('/home')
     } catch (err) {
-      console.error(err);
+      const { response: { data: { error } } } = err;
+      setErrMsg(error);
     }
   }
 
@@ -35,29 +38,35 @@ function Register() {
   }
   return (
     <div>
-      <h2>Faça seu registro:</h2>
-      <div>
-        <label>Nome de usuário: 
+      <GenericHeader />
+      <div className="login-screen">
+      <h2 className="login-title">Faça seu registro</h2>
+      <div className="space-y-5 shadow-xl shadow-slate-250 p-1 text-center">
+          <div className="login-input">
             <input
+            className="login-input-style"
               type="submmit"
               placeholder="Nome de usuário"
               name="username"
               onChange={ (e) => handlerChange(e) }
             />
-          </label>
 
-          <label> Senha:
             <input
+              className="login-input-style"
               type="password"
               placeholder="senha"
               name="password"
               onChange={ (e) => handlerChange(e) }
             />
-          </label>
+          </div>
 
-          <button onClick={ () => callApi() }>
+          <button
+            className="bg-slate-300 container mx-auto hover:bg-black hover:text-white p-1 rounded"
+            onClick={ () => callApi() }>
             registrar
           </button>
+          { errorMsg ? <span className="text-red-600">{errorMsg}</span> : "" }
+        </div>
       </div>
     </div>
   )
