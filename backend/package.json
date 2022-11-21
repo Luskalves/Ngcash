@@ -7,7 +7,7 @@
     "start": "node ./build/index.js",
     "prestart": "npm run build && npm run db:reset",
     "build": "npx tsc",
-    "test": "mocha -r ts-node/register ./src/tests/*/*/*$NAME*.test.ts -t 10000 --exit",
+    "test": "mocha -r ts-node/register ./src/tests/*/**/**/*$NAME*.test.ts -t 10000 --exit",
     "dev": "ts-node-dev ./src/index.ts",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
