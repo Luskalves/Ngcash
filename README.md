@@ -22,7 +22,7 @@
  
  ### Tecnologias utilizadas:
  
- #### Backend:
+ ### ```Backend:```
  <details> 
     <summary> Typescript </summary> </br>
     Typescript foi a principal linguagem utilizada para desenvolver a parte de backend do projeto. Praticamente todas as dependências tando de produção quanto de desenvolvimento utilizam a linguagem.
@@ -30,7 +30,7 @@
  
  <details>
     <summary> Javascript </summary> </br>
-    O Javascript foi utilizado apenas para desenvolver as migrations e seeders dentro das pastas <strong>/src/database/migrations</strong> e <strong>/src/database/seeders</strong> Como a dependência de desenvolvimento <strong>sequelize-cli</strong> não suporta estes arquivos em Typescript a utilização da linguagem é necessária.
+     O Javascript foi utilizado apenas para desenvolver as migrations e seeders dentro das pastas <strong>/src/database/migrations</strong> e <strong>/src/database/seeders</strong> Como a dependência de desenvolvimento <strong>sequelize-cli</strong> não suporta estes arquivos em Typescript a utilização da linguagem é necessária.
  </details>
  
  <details>
@@ -111,7 +111,9 @@
     Utilizado nos testes para fazer uma simulação do retorno dos metodos sem que prejudique ou popule o banco de dados indevidamente.
  </details>
  
-#### Frontend:
+ 
+### ```Frontend:```
+
 
  <details>
     <summary> React </summary> </br>
@@ -133,13 +135,11 @@
     Biblioteca utilizada para fazer a estilização da aplicação.
  </details>
 
-<h2 id="dev_details"> Detalhes de desenvolvimento </h2>
 <h2 id="file_struct"> Estrutura dos arquivos </h2>
 
 #### Mapa dos arquivos de:
 <details> 
 <summary> Backend </summary> </br>
-estrutura: 
 
     ├── src/
     │   ├── controllers/
@@ -220,4 +220,41 @@ estrutura:
     ├── package.json
     ├── tsconfig.json
 
+</details>
+
+<details>
+    <summary> Frontend </summary>
+       
+    ├── src/
+    │   ├── api/
+    │   │   ├── backendApi.js
+    │   ├── components/
+    │   │   ├── DoTransaction.js
+    │   │   ├── GenericHeader.js
+    │   │   ├── Header.js
+    │   ├── context/
+    │   │   ├── context.js
+    │   │   ├── Provider.js
+    │   ├── pages/
+    │   │   ├── Deposit.js
+    │   │   ├── Home.js
+    │   │   ├── Login.js
+    │   │   ├── NotFound.js
+    │   │   ├── Register.js
+    │   │   ├── Transactions.js
+    │   ├── app.js
+    │   ├── App.test.js
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── logo.svg
+    │   ├── reportWebVitals.js
+    │   ├── setupTests.js
+    ├── .dockerignore
+    ├── .gitignore
+    ├── Dockerfile
+    ├── package-lock.json
+    ├── package.json
+    ├── postcss.config
+    ├── tailwind.config.js    
+    
 </details>
