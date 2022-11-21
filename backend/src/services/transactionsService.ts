@@ -17,7 +17,7 @@ class TransactionsService {
     this.SecondaryModel = secondaryModel;
   }
 
-  private async getUser(token: string): Promise<IUserInfo> {
+  public async getUser(token: string): Promise<IUserInfo> {
     if (!token) throw new BadRequest("Token inválido!");
 
     const data = jwt.decode(token);
@@ -34,7 +34,7 @@ class TransactionsService {
     const user = await this.getUser(token);
     const destUser = await this.SecondaryModel.userInfo(userDest);
 
-    if (user.accountId === destUser.accountId) throw new ConflictError(SAME_USER)
+    if (user.accountId === destUser.accountId) throw new ConflictError(SAME_USER);
 
     if (value > user.balance) throw new ConflictError("Saldo insuficiente");
 
