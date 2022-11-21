@@ -282,9 +282,19 @@ A pasta principal do projeto é a pasta ```src/```, pois nela estão todos os ar
 
 <h2 id="run_project"> Como rodar o projeto: </h2>
 
-### Rodando com o docker
+### Rodando com o docker:
 
   <ul>
+    <li> Clone o repositório. </li>
+    <li> Entre na pasta do projeto. </li>
     <li> Utilize o comando npm run compose:up para subir os containers e espere eles serem inicializados. </li>
     <li> Abra o navegador e acesse em <strong>localhost:3000</strong> ou clicando <a target="_blank" href="http://localhost:3000"> aqui </a>  para entrar na tela de login.</li>
   </ul>
+  
+### Rodando localmente:  
+
+   - Clone o reposiório.
+   - Entre na pasta do projeto.
+   - Entre na pasta de ```backend/``` e instale as depêndencias com ```npm install``` em seguida use o comando ```npm start``` para iniciar a API.
+   - Entre na pasta de ```frontend/``` e instale as depêndencias com ```npm install``` em seguida use o comando ```npm start``` para iniciar o front (é necessário que a API esteja rodando).
+
