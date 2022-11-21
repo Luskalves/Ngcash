@@ -52,7 +52,7 @@ function DoTransaction() {
           type="number"
           name="depositValue"
           min="0"
-          placeholder="Valor para transferir"
+          placeholder="Valor Para Transferir"
           onChange={ (e) => handlerChange(e) }
         />
       <button
