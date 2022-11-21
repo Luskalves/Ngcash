@@ -10,16 +10,6 @@ class UserService {
     this.Model = model;
   }
 
-  private async getUser(token: string): Promise<IUserInfo> {
-    if (!token) throw new BadRequest("Token inválido!");
-
-    const data = jwt.decode(token);
-    const { username } = data as IUser;
-    const user = await this.Model.userInfo(username);
-
-    return user;
-  }
-
   public async userInfo(token: string): Promise<IUserInfo> {
     const data = jwt.decode(token);
 
@@ -35,7 +25,7 @@ class UserService {
   public async userDeposit(token: string, value: number): Promise<void> {
     if (value <= 0 ) throw new BadRequest("Valor de deposito inválido.");
 
-    const { accountId } = await this.getUser(token);
+    const { accountId } = await this.userInfo(token);
 
     await this.Model.userDeposit(accountId, value);
   }
