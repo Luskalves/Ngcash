@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as sinon from 'sinon';
-import LoginModel from '../../../models/loginModel';
 import { validUser } from '../../mocks/userMocks';
+import LoginModel from '../../../models/loginModel';
 import Users from '../../../database/models/Users';
 import NotFound from '../../../errors/NotFound';
 
@@ -31,5 +31,5 @@ describe("Testes do model de login", () => {
     }
 
     expect(response).to.be.instanceOf(NotFound);
-  })
+  });
 });
