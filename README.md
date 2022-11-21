@@ -291,10 +291,10 @@ A pasta principal do projeto é a pasta ```src/```, pois nela estão todos os ar
     <li> Abra o navegador e acesse em <strong>localhost:3000</strong> ou clicando <a target="_blank" href="http://localhost:3000"> aqui </a>  para entrar na tela de login.</li>
   </ul>
    
-    <details>
-        <summary> Atenção ⚠️ </summary>
-        Caso ocorra algum erro na na build dos containers, utilize o comando: npm run compose:restart:dev
-    </details>
+<details>
+    <summary> ⚠️ Atenção ⚠️ </summary>
+    Caso ocorra algum erro na na build dos containers, utilize o comando: npm run compose:restart:dev
+</details>
   
 ### Rodando localmente:  
 
