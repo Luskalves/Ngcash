@@ -21,7 +21,9 @@ class RegisterService {
 
     await this.Model.existUser(user.username);
     user.password = md5(user.password)
-    await this.Model.register(user);
+    const userResponse = await this.Model.register(user);
+
+    if (!userResponse) throw new BadRequest("Não foi possivel registrar o usuario");
 
     const payload = {
       username: user.username,
