@@ -195,7 +195,7 @@ estrutura:
     │   ├── tests/
     │   │   ├── mocks/
     │   │   │   ├── transactionsMocks;.ts
-    │   │   │   │├── userMocks.ts
+    │   │   │   ├── userMocks.ts
     │   │   ├── unit/
     │   │   │   ├── controllers/
     │   │   │   │   ├── loginController.test.ts
