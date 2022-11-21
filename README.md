@@ -9,7 +9,12 @@
  </ul>
  
  
- <h2 id="run_project"> Como rodar o projeto: </h2>
- <h2 id="tech_details"> Detalhes técnicos </h2>
- <h2 id="dev_details"> Detalhes de desenvolvimento </h2>
- <h2 id="file_struct"> Estrutura dos arquivos </h2>
+<h2 id="run_project"> Como rodar o projeto: </h2>
+
+### Rodando com o docker
+  - Utilize o comando ```npm run compose:up``` para subir os containers e espere eles serem inicializados.
+  - Abra o navegador e acesse em ```localhost:3000``` para entrar na tela de login.
+ 
+<h2 id="tech_details"> Detalhes técnicos </h2>
+<h2 id="dev_details"> Detalhes de desenvolvimento </h2>
+<h2 id="file_struct"> Estrutura dos arquivos </h2>
