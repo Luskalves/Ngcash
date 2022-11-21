@@ -36,7 +36,7 @@ A pasta principal do projeto é a pasta ```src/```, pois nela estão todos os ar
 - A pasta ```models``` possuí as classes de cada requisição de uma rota específica e que utilizam os ```models``` dentro da pasta ```src/database/models/``` para fazer suas respectivas comunicações com o banco de dados.
 - A pasta ```routes/``` tem os aqruivos com todas as rotas e com seus metodos de chamada.
 - A pasta ```service/``` tem os arquivos que intermediam a comunicação da requisição com o banco de dados, fazendo o tratamento necesário tanto para a resposta quanto para a requisição ao banco de dados, garantindo que o valor retornado seja o esperado.
-- A pasta 
+- A pasta ```tests/``` possui os testes unitários e simulações de entrada/resposta para os arquivos dentro das pastas de ```controllers/```,```services/``` e ```models/``` 
 
 <h2 id="tech_details"> Detalhes técnicos </h2>
  
