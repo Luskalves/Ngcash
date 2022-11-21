@@ -2,27 +2,47 @@
 
 ### Tópicos:
  <ul>
-    <li> <a href="#run_project"> Como rodar o projeto </a> </li>
-    <li> <a href="#tech_details"> Detalhes técnicos </a> </li>
     <li> <a href="#dev_details"> Detalhes de desenvolvimento </a> </li>
+    <li> <a href="#tech_details"> Detalhes técnicos </a> </li>
     <li> <a href="#file_struct"> Estrutura dos arquivos </a> </li>
+    <li> <a href="#run_project"> Como rodar o projeto </a> </li>
  </ul>
- 
- 
-<h2 id="run_project"> Como rodar o projeto: </h2>
 
-### Rodando com o docker
+<h2 id="dev_details"> Detalhes de desenvolvimento </h2>
 
-  <ul>
-    <li> Utilize o comando npm run compose:up para subir os containers e espere eles serem inicializados. </li>
-    <li> Abra o navegador e acesse em <strong>localhost:3000</strong> ou clicando <a target="_blank" href="http://localhost:3000"> aqui </a>  para entrar na tela de login.</li>
-  </ul>
- 
+### Sobre a API:
+
+O projeto começou a ser desenvolvido pelo ```Backend```, com foco no desenvolvimento da API, o projeto em sua maior parte foi escrito utilizando ```Typescript```, e utilizando o Sequelize para se comunicar e popular o banco de dados. A API possuí 4 rotas distintas com seus respectivos metodos ```http``` e retornos, são elas as rotas de ```login```, ```register```, ```transactions``` e ```user```.
+
+- A rota de ```login``` é responsável por validar se um usuário existe no banco e retornar um ```token``` caso o mesmo exista.
+- A rota de ```register``` verifica se um usuário existe no banco de dados e se não existir cria um novo e retorna um ```token```.
+- A rota de ```transactions``` é responsável por criar e gerenciar as transações, podendo retornar todas as transações do usuário, ou podendo retornar filtradas por data. No filtro de data também é possível filtrar as transações feitas/recebidas do usuário.
+- A rota de ```user``` retorna as informações do usuário e também recebe depositos caso o usuário queira aumentar o seu saldo.    
+
+### Sobre as Pastas:
+
+#### Backend:
+A pasta principal do projeto é a pasta ```src/```, pois nela estão todos os arquivos necessários para o funcionamento do projeto. 
+
+- A pasta ```contollers/``` é onde estão os arquivos responsáveis por gerenciar as requisições para a API, fazendo a desconstrução do corpo das requisições e passando as informações para serem tratadas pelo ```service``` e retornando uma resposta para o usuário com um código ```HTTP``` referente ao estatus da requisição.
+- Dentro da pasta database estão as subpastas: 
+    -```config/```: Com o arquivo ```index.ts``` que cuida da conecção com o banco de dados,
+    -```migrations/```: Com os arquivos estabelecendo os padrões que cada tabela deve trabalhar.
+    -```models/```: Com os arquivos responsáveis por fazer a comunicação com o banco de dados.
+    -```seeders/```: Com arquivos para popular o banco de dados com informações iniciasi.
+- A pasta ```errors``` estão classes de erros personalizados com seus códigos e nomes referentes a erros ```HTTP```.
+- A pasta ```interfaces/``` contem as interfaces e tipos utilizado para fazer a tipagem do retorno de metodos ou variáveis.
+- A pasta ```middlewares/``` contem o middleware de erro que trata os erros disparados retornando o seu código e a mensagem de erro sem que seja necessário parar a API.
+- A pasta ```models``` possuí as classes de cada requisição de uma rota específica e que utilizam os ```models``` dentro da pasta ```src/database/models/``` para fazer suas respectivas comunicações com o banco de dados.
+- A pasta ```routes/``` tem os aqruivos com todas as rotas e com seus metodos de chamada.
+- A pasta ```service/``` tem os arquivos que intermediam a comunicação da requisição com o banco de dados, fazendo o tratamento necesário tanto para a resposta quanto para a requisição ao banco de dados, garantindo que o valor retornado seja o esperado.
+- A pasta 
+
 <h2 id="tech_details"> Detalhes técnicos </h2>
  
  ### Tecnologias utilizadas:
  
- ### ```Backend:```
+ ### ```Backend```:
  <details> 
     <summary> Typescript </summary> </br>
     Typescript foi a principal linguagem utilizada para desenvolver a parte de backend do projeto. Praticamente todas as dependências tando de produção quanto de desenvolvimento utilizam a linguagem.
@@ -112,7 +132,7 @@
  </details>
  
  
-### ```Frontend:```
+### ```Frontend```:
 
 
  <details>
@@ -258,3 +278,13 @@
     ├── tailwind.config.js    
     
 </details>
+
+
+<h2 id="run_project"> Como rodar o projeto: </h2>
+
+### Rodando com o docker
+
+  <ul>
+    <li> Utilize o comando npm run compose:up para subir os containers e espere eles serem inicializados. </li>
+    <li> Abra o navegador e acesse em <strong>localhost:3000</strong> ou clicando <a target="_blank" href="http://localhost:3000"> aqui </a>  para entrar na tela de login.</li>
+  </ul>
