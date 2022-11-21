@@ -292,8 +292,10 @@ A pasta principal do projeto é a pasta ```src/```, pois nela estão todos os ar
   </ul>
    
 <details>
-    <summary> ⚠️ Atenção ⚠️ </summary>
-    Caso ocorra algum erro na na build dos containers, utilize o comando: npm run compose:restart:dev
+    <summary> ⚠️ Atenção ⚠️ </summary></br>
+    Caso ocorra algum erro na na build dos containers, utilize o comando: 
+ 
+    npm run compose:restart:dev
 </details>
   
 ### Rodando localmente:  
