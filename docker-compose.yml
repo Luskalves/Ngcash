@@ -33,6 +33,7 @@ services:
       - DB_USER=ngcash
       - DB_PASS=ngcash123
       - DB_PORT=5432
+      - JWT_SECRET=ngcash_scret
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
