@@ -15,7 +15,7 @@
 
   <ul>
     <li> Utilize o comando npm run compose:up para subir os containers e espere eles serem inicializados. </li>
-    <li> Abra o navegador e acesse em <strong>localhost:3000</strong> ou clicando <a href="http://localhost:3000" target="_blank"> aqui </a>  para entrar na tela de login.</li>
+    <li> Abra o navegador e acesse em <strong>localhost:3000</strong> ou clicando <a href="http://localhost:3000"> aqui </a>  para entrar na tela de login.</li>
   </ul>
  
 <h2 id="tech_details"> Detalhes técnicos </h2>
