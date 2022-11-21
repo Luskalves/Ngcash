@@ -1,5 +1,6 @@
 import Accounts from '../database/models/Accounts';
 import Users from '../database/models/Users';
+import BadRequest from '../errors/BadRequest';
 import IUser from '../interfaces/IUser';
 import IRegister from '../interfaces/models/IRegister';
 
@@ -11,7 +12,7 @@ class RegisterModel implements IRegister {
       }
     });
     if (exists) {
-      throw new Error("O usurário já existe")
+      throw new BadRequest("O usurário já existe")
     }
   }
 
@@ -20,13 +21,19 @@ class RegisterModel implements IRegister {
 
     const account = await Accounts.create({
       balance: 100,
-    })
+    });
 
-    await Users.create({
+    if (!account) throw new BadRequest("Não foi possivel criar um conta");
+
+    const response = await Users.create({
       username,
       password,
       accountId: account.id
-    });    
+    });
+
+    if (!response) throw new BadRequest("Não foi possivel criar um conta");
+    
+    return response;
   }
 }
 
