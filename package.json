@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "compose:up": "docker-compose up --build -d",
     "compose:down": "docker-compose down",
-    "compose:restart": "docker-compose down && docker-compose up --build -d"
+    "compose:restart": "npm i && docker-compose down && docker-compose up --build -d",
+    "compose:restart:dev": "cd backend/ && npm i && cd ../frontend/ && npm i && docker-compose down && docker-compose up --build -d"
   },
   "repository": {
     "type": "git",
